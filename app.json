@@ -1,15 +1,16 @@
 {
   "expo": {
-    "name": "HelloWorld",
+    "name": "Uniconnect",
     "slug": "expo-template-default",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "helloworld",
+    "scheme": "uniconnect",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.damaluja.uniconnect"
     },
     "android": {
       "adaptiveIcon": {

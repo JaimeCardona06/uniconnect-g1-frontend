@@ -1,15 +1,16 @@
-import React, { useEffect } from "react";
-import * as WebBrowser from "expo-web-browser";
 import * as Google from "expo-auth-session/providers/google";
+import * as WebBrowser from "expo-web-browser";
+import React, { useEffect } from "react";
+import { ActivityIndicator, Button, View } from "react-native";
 import { useLogin } from "../hooks/useLogin";
-import { Button, View, ActivityIndicator } from "react-native";
 
 WebBrowser.maybeCompleteAuthSession();
 
 export function GoogleLoginButton() {
   const [request, response, promptAsync] = Google.useAuthRequest({
-    webClientId: process.env.EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID, 
-    androidClientId: "PENDIENTE", 
+    webClientId: process.env.EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID,
+    androidClientId: "PENDIENTE",
+    iosClientId: process.env.EXPO_PUBLIC_GOOGLE_IOS_CLIENT_ID,
   });
 
   const loginMutation = useLogin();
@@ -18,7 +19,7 @@ export function GoogleLoginButton() {
     if (response?.type === "success") {
       const accessToken = response.authentication?.accessToken;
       if (accessToken) {
-        loginMutation.mutate(accessToken); 
+        loginMutation.mutate(accessToken);
       }
     }
   }, [response]);
